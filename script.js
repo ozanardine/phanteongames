@@ -1,25 +1,28 @@
 const STEAM_API_KEY = '2F7E9C9218555BD019C8A15A61F54A22';
-const SERVER_IP = '45.88.229.94:28017'; // Coloque o IP do servidor
+const SERVERS = [
+    { id: 1, ip: '45.88.229.94:28017' },
+    { id: 2, ip: '45.88.229.95:28017' } // Adicione outros servidores conforme necessário
+];
 
 // Busca dados do servidor Rust usando a Steam API
-async function fetchRustServerData() {
+async function fetchRustServerData(server) {
     try {
-        const response = await fetch(`https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=${STEAM_API_KEY}&filter=\\appid\\252490\\addr\\${SERVER_IP}`);
+        const response = await fetch(`https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=${STEAM_API_KEY}&filter=\\appid\\252490\\addr\\${server.ip}`);
         const data = await response.json();
         
         if (data.response.servers && data.response.servers.length > 0) {
-            const server = data.response.servers[0];
-            const playersOnline = server.players;
-            const maxPlayers = server.max_players;
+            const serverData = data.response.servers[0];
+            const playersOnline = serverData.players;
+            const maxPlayers = serverData.max_players;
 
             // Atualiza a barra de progresso
-            const progressElement = document.getElementById('playerProgress');
+            const progressElement = document.getElementById(`playerProgress${server.id}`);
             const percentage = (playersOnline / maxPlayers) * 100;
             progressElement.style.width = percentage + '%';
 
             // Atualiza a descrição do servidor
-            const serverDescriptionElement = document.getElementById('serverDescription');
-            serverDescriptionElement.textContent = `${server.name} - ${playersOnline}/${maxPlayers} Jogadores Online`;
+            const serverDescriptionElement = document.getElementById(`serverDescription${server.id}`);
+            serverDescriptionElement.textContent = `${serverData.name} - ${playersOnline}/${maxPlayers} Jogadores Online`;
         }
     } catch (error) {
         console.error('Erro ao buscar dados do servidor:', error);
@@ -27,10 +30,10 @@ async function fetchRustServerData() {
 }
 
 // Medição de ping
-function measurePing() {
+function measurePing(server) {
     const startTime = Date.now();
-    const pingText = document.getElementById('pingText');
-    const pingIndicator = document.getElementById('pingIndicator');
+    const pingText = document.getElementById(`pingText${server.id}`);
+    const pingIndicator = document.getElementById(`pingIndicator${server.id}`);
     
     fetch('https://api.github.com') // Usar um endpoint rápido para teste
         .then(() => {
@@ -54,8 +57,10 @@ function measurePing() {
 
 // Atualiza dados em intervalos regulares
 function updateData() {
-    fetchRustServerData();
-    measurePing();
+    SERVERS.forEach(server => {
+        fetchRustServerData(server);
+        measurePing(server);
+    });
 }
 
 // Atualiza a cada 10 segundos
