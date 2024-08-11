@@ -14,7 +14,7 @@ body {
     align-items: center;
 }
 
-.header h1, .footer h1 {
+.header h1, .footer p {
     font-size: 24px;
     margin: 0;
 }
@@ -32,13 +32,24 @@ body {
 
 .main {
     padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.servers-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .server-card {
     background-color: #1e1e1e;
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 20px;
+    width: 300px;
+    height: 400px;
     text-align: center;
     position: relative;
 }
@@ -46,8 +57,8 @@ body {
 .server-card img {
     width: 100%;
     height: auto;
-    max-width: 400px;
     border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .progress-bar {
@@ -55,7 +66,6 @@ body {
     border-radius: 8px;
     margin: 10px 0;
     width: 100%;
-    max-width: 400px;
     height: 20px;
     overflow: hidden;
 }
@@ -97,7 +107,18 @@ body {
 
 .subscription-section {
     text-align: center;
-    margin: 20px 0;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.subscription-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.subscription-section ul li {
+    margin: 5px 0;
 }
 
 .subscription-button {
@@ -107,7 +128,7 @@ body {
     padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
-    margin: 0 10px;
+    margin: 10px 5px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -119,4 +140,11 @@ body {
 
 .footer {
     text-align: center;
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .main {
+        grid-template-columns: 2fr 1fr;
+    }
 }
