@@ -1,0 +1,122 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* Tema dark */
+    color: #ffffff;
+}
+
+.header, .footer {
+    background-color: #1DB954; /* Cor verde do Spotify */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1, .footer h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.menu a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #e0e0e0;
+}
+
+.main {
+    padding: 20px;
+}
+
+.server-card {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.server-card img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+.progress-bar {
+    background-color: #333;
+    border-radius: 8px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 400px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    background-color: #1DB954;
+    height: 100%;
+    width: 0%; /* Será ajustada pelo JavaScript */
+}
+
+.ping-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.ping-indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.connect-button {
+    background-color: #1DB954;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.connect-button:hover {
+    background-color: #14843e;
+}
+
+.subscription-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.subscription-button {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 2px solid #1DB954;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.subscription-button:hover {
+    background-color: #1DB954;
+    color: #1e1e1e;
+}
+
+.footer {
+    text-align: center;
+}
