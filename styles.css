@@ -34,18 +34,34 @@ body {
 }
 
 .main {
-    padding: 20px;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    align-items: center;
+    padding: 20px;
+}
+
+.section-header {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin: 20px 0;
+}
+
+.server-header {
+    background-color: #2A2A2A;
+}
+
+.subscription-header {
+    background-color: #343434;
 }
 
 .servers-section {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
-    margin-bottom: 20px;
+    width: 100%;
 }
 
 .server-card {
@@ -115,6 +131,7 @@ body {
     background-color: #1e1e1e;
     border-radius: 8px;
     padding: 20px;
+    width: 300px;
     margin-bottom: 20px;
 }
 
@@ -147,22 +164,4 @@ body {
 .footer {
     text-align: center;
     padding: 20px;
-}
-
-@media (min-width: 768px) {
-    .main {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-    
-    .servers-section {
-        flex: 2;
-    }
-
-    .subscription-section {
-        flex: 1;
-        max-width: 400px;
-        margin-left: 20px;
-    }
 }
