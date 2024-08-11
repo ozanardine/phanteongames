@@ -10,7 +10,7 @@ body {
 }
 
 .header, .footer {
-    background-color: #1DB954; /* Cor verde do Spotify */
+    background-color: #EC4D2D; /* Cor verde do Spotify */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -93,7 +93,7 @@ body {
 }
 
 .progress {
-    background-color: #1DB954;
+    background-color: #EC4D2D;
     height: 100%;
     width: 0%; /* Será ajustada pelo JavaScript */
 }
@@ -113,7 +113,7 @@ body {
 }
 
 .connect-button {
-    background-color: #1DB954;
+    background-color: #EC4D2D;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -148,7 +148,7 @@ body {
 .subscription-button {
     background-color: #1e1e1e;
     color: #ffffff;
-    border: 2px solid #1DB954;
+    border: 2px solid #EC4D2D;
     padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
@@ -158,7 +158,7 @@ body {
 }
 
 .subscription-button:hover {
-    background-color: #1DB954;
+    background-color: #EC4D2D;
     color: #1e1e1e;
 }
 
