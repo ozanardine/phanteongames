@@ -110,20 +110,29 @@ body {
     height: 20px;
     overflow: hidden;
     position: relative;
+    color: #ffffff; /* Garante que o texto seja branco */
+    display: flex;
+    align-items: center; /* Centraliza verticalmente o texto */
+    justify-content: center; /* Centraliza horizontalmente o texto */
 }
 
 .progress {
     background-color: #EC4D2D;
     height: 100%;
     width: 0%; /* Será ajustada pelo JavaScript */
-    text-align: center;
-    line-height: 20px;
-    color: #fff;
+    transition: width 0.3s ease-in-out;
 }
 
-.server-description {
+.server-description p {
+    margin: 5px 0;
+}
+
+#mapDetails {
+    background-color: #2C2C2C;
+    padding: 10px;
     margin-top: 10px;
-    font-size: 14px;
+    border-radius: 5px;
+    color: #FFF;
 }
 
 .connect-button {
