@@ -22,44 +22,18 @@ async function fetchRustServerData(server) {
             // Atualiza a descrição do servidor
             const serverDescriptionElement = document.getElementById(`serverDescription${server.id}`);
             serverDescriptionElement.textContent = `${serverData.name} - ${playersOnline}/${maxPlayers} Jogadores Online`;
+        } else {
+            console.log('Servidor não encontrado.');
         }
     } catch (error) {
         console.error('Erro ao buscar dados do servidor:', error);
     }
 }
 
-// Medição de ping
-function measurePing(server) {
-    const startTime = Date.now();
-    const pingText = document.getElementById(`pingText${server.id}`);
-    const pingIndicator = document.getElementById(`pingIndicator${server.id}`);
-
-    // Aqui, usamos um serviço que responde rapidamente para medir o ping. Substitua por um endpoint válido.
-    fetch(`https://example.com/ping?server=${server.ip}`) // Simule um endpoint que retorne rapidamente
-        .then(() => {
-            const ping = Date.now() - startTime;
-            pingText.textContent = `Ping: ${ping} ms`;
-            
-            // Define a cor do indicador de ping
-            if (ping < 100) {
-                pingIndicator.style.backgroundColor = 'green';
-            } else if (ping < 200) {
-                pingIndicator.style.backgroundColor = 'yellow';
-            } else {
-                pingIndicator.style.backgroundColor = 'red';
-            }
-        })
-        .catch(() => {
-            pingText.textContent = 'Ping: Error';
-            pingIndicator.style.backgroundColor = 'red';
-        });
-}
-
 // Atualiza dados em intervalos regulares
 function updateData() {
     SERVERS.forEach(server => {
         fetchRustServerData(server);
-        measurePing(server);
     });
 }
 
