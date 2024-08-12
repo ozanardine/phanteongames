@@ -54,7 +54,7 @@ body {
 }
 
 .servers-section, .discord-section, .subscriptions-section, .staff-section {
-    padding: 20px;
+    padding: 10px;
     height: 600px; /* Altura máxima dos blocos */
     overflow-x: auto; /* Ativa rolagem horizontal */
     overflow-y: auto; /* Ativa rolagem vertical */
