@@ -1,5 +1,5 @@
 const SERVER_ID = '28926430'; // ID do seu servidor no BattleMetrics
-const API_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjVkYWQxOTZjZjM0NGM5NWQiLCJpYXQiOjE3MjM0MzE1OTYsIm5iZiI6MTcyMzQzMTU5NiwiaXNzIjoiaHR0cHM6Ly93d3cuYmF0dGxlbWV0cmljcy5jb20iLCJzdWIiOiJ1cm46dXNlcjoxNzI3NzAifQ.QaKllPjTEj0HHLbbh5BI1ePZ9GqO9FJ3MjnY_DMDM0c';
+const API_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjVkYWQxOTZjZjM0NGM5NWQiLCJpYXQiOjE3MjM0MzE1OTYsIm5iZiI6MTcyMzQzMTU5NiwiaXNzIjoiaHR0cHM6Ly93d3cuYmF0dGxlbWV0cmljcy5jb20iLCJzdWIiOiJ1cm46dXNlcjoxNzI3NzAifQ.QaKllPjTEj0HHLbbh5BI1ePZ9GqO9FJ3MjnY_DMDM0c'; // Sua chave de API do BattleMetrics
 
 async function fetchServerData() {
     try {
@@ -25,26 +25,29 @@ async function fetchServerData() {
 
 function updateServerInfo(serverData) {
     const playersOnline = serverData.players;
-    const maxPlayers = 50; // Sua capacidade máxima de jogadores
+    const maxPlayers = 50; // Capacidade máxima de jogadores
     const serverName = serverData.name;
     const serverStatus = serverData.status;
-    const map = serverData.details.map;
-    const seed = serverData.details.mapSeed;
-    const size = serverData.details.mapSize;
 
     // Atualizar status
     const statusTag = document.getElementById('serverStatus1');
     statusTag.textContent = serverStatus.charAt(0).toUpperCase() + serverStatus.slice(1);
     statusTag.className = `status-tag ${serverStatus}`;
+    
+    // Atualizar progresso e quantidade de jogadores
     const progressElement = document.getElementById('playerProgress1');
     const percentage = (playersOnline / maxPlayers) * 100;
     progressElement.style.width = percentage + '%';
-    progressElement.textContent = `${playersOnline}/${maxPlayers}`;
+    progressElement.textContent = `${playersOnline}/${maxPlayers}`; // Texto centralizado
+
+    // Atualizar nome do servidor
+    const serverNameElement = document.getElementById('serverName1');
+    serverNameElement.textContent = serverName;
+
+    // Atualizar descrição breve (exemplo abaixo)
     const serverDescriptionElement = document.getElementById('serverDescription1');
-    serverDescriptionElement.textContent = serverName;
-    const serverMapInfoElement = document.getElementById('serverMapInfo');
-    serverMapInfoElement.innerHTML = `Map: ${map} | Seed: ${seed} | Size: ${size}`;
+    serverDescriptionElement.textContent = "Descrição breve do servidor aqui.";
 }
 
+// Chamada inicial para buscar dados
 fetchServerData();
-
