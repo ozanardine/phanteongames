@@ -1,44 +1,49 @@
-const STEAM_API_KEY = '2F7E9C9218555BD019C8A15A61F54A22';
-const SERVERS = [
-    { id: 1, ip: '154.127.54.57:28080' }
-];
+const RCON_PASSWORD = '968570';
+const SERVER_IP = '154.127.54.57';
+const RCON_PORT = 28016;
 
-// Busca dados do servidor Rust usando a Steam API
-async function fetchRustServerData(server) {
-    try {
-        const response = await fetch(`https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=${STEAM_API_KEY}&filter=\\appid\\252490\\addr\\${server.ip}`);
-        const data = await response.json();
-        
-        if (data.response.servers && data.response.servers.length > 0) {
-            const serverData = data.response.servers[0];
-            const playersOnline = serverData.players;
-            const maxPlayers = serverData.max_players;
+async function connectWebRCON() {
+    const socket = new WebSocket(`ws://${SERVER_IP}:${RCON_PORT}/${RCON_PASSWORD}`);
 
-            // Atualiza a barra de progresso
-            const progressElement = document.getElementById(`playerProgress${server.id}`);
-            const percentage = (playersOnline / maxPlayers) * 100;
-            progressElement.style.width = percentage + '%';
+    socket.onopen = () => {
+        console.log('Conectado ao WebRCON');
+        // Envie o comando para obter a lista de jogadores
+        socket.send(JSON.stringify({ Identifier: 1, Message: "playerlist", Name: "WebRcon" }));
+    };
 
-            // Atualiza a descrição do servidor
-            const serverDescriptionElement = document.getElementById(`serverDescription${server.id}`);
-            serverDescriptionElement.textContent = `${serverData.name} - ${playersOnline}/${maxPlayers} Jogadores Online`;
-        } else {
-            console.log('Servidor não encontrado.');
+    socket.onmessage = (event) => {
+        const response = JSON.parse(event.data);
+        if (response.Identifier === 1) {
+            const playerData = JSON.parse(response.Message);
+            console.log(playerData);
+            // Atualize as informações no seu site
+            updatePlayerInfo(playerData);
         }
-    } catch (error) {
-        console.error('Erro ao buscar dados do servidor:', error);
-    }
+    };
+
+    socket.onerror = (error) => {
+        console.error('Erro no WebRCON:', error);
+    };
+
+    socket.onclose = () => {
+        console.log('Conexão com o WebRCON fechada');
+        // Tentar reconectar após algum tempo
+        setTimeout(connectWebRCON, 5000);
+    };
 }
 
-// Atualiza dados em intervalos regulares
-function updateData() {
-    SERVERS.forEach(server => {
-        fetchRustServerData(server);
-    });
+function updatePlayerInfo(playerData) {
+    const playersOnline = playerData.Players.length;
+    const maxPlayers = 100; // Defina a capacidade máxima de jogadores do seu servidor
+
+    // Atualize a barra de progresso e a descrição
+    const progressElement = document.getElementById('playerProgress1');
+    const percentage = (playersOnline / maxPlayers) * 100;
+    progressElement.style.width = percentage + '%';
+
+    const serverDescriptionElement = document.getElementById('serverDescription1');
+    serverDescriptionElement.textContent = `Rust Server #1 - ${playersOnline}/${maxPlayers} Jogadores Online`;
 }
 
-// Atualiza a cada 10 segundos
-setInterval(updateData, 10000);
-
-// Chamada inicial
-updateData();
+// Chamada inicial para conectar ao WebRCON
+connectWebRCON();
