@@ -28,7 +28,7 @@ body {
 
 .header, .footer {
     background-color: #EC4D2D;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -81,15 +81,15 @@ body {
     border-radius: 10px;
     padding: 20px;
     width: 300px; /* Largura fixa do card do servidor */
-    height: 400px; /* Altura fixa do card do servidor */
+    height: 450px; /* Altura fixa do card do servidor */
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: inline-block; /* Permite que os cards fiquem lado a lado */
 }
 
 .menu a {
-    margin-left: 50px;
-    padding: 10px;
+    margin-left: 150px;
+    padding: 5px;
     text-decoration: none;
     color: #ffffff;
     transition: color 0.3s;
