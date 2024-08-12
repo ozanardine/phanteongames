@@ -46,12 +46,7 @@ function updateServerInfo(serverData) {
     // Atualizar o nome do servidor exibido
     const serverNameElement = document.getElementById('serverNameDisplay');
     serverNameElement.textContent = serverName;
-
-    // Atualizar a descrição breve do servidor
-    const serverDescriptionElement = document.getElementById('serverDescription1');
-    serverDescriptionElement.textContent = "Descrição breve do servidor aqui.";
 }
 
 // Executar a função para buscar e atualizar os dados quando o documento estiver pronto
 fetchServerData();
-
