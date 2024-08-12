@@ -15,18 +15,51 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .footer {
     text-align: center;
-    justify-content: center; /* Centraliza o texto no rodapé */
-    width: 100%; /* Largura total */
     font-size: 11px; /* Tamanho da fonte ajustado */
 }
 
-.header h1, .footer p {
-    font-size: 24px;
-    margin: 0;
+.main-container {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap; /* Permite que os blocos se ajustem ao tamanho da tela */
+}
+
+.left-column, .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.servers-section, .discord-section, .subscriptions-section, .staff-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto; /* Adiciona scroll vertical se necessário */
+    padding: 20px;
+    border: 1px solid #333; /* Adiciona borda para melhor visualização */
+}
+
+.servers-section {
+    background-color: #1e1e1e;
+}
+
+.discord-section {
+    background-color: #2a2a2a;
+}
+
+.subscriptions-section {
+    background-color: #343434;
+}
+
+.staff-section {
+    background-color: #404040;
 }
 
 .menu a {
@@ -40,62 +73,18 @@ body {
     color: #e0e0e0;
 }
 
-.main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.servers-discord-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.servers-section {
-    flex: 1;
-}
-
-.discord-widget {
-    width: 350px;
-}
-
-.section-header {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    margin: 20px 0;
-}
-
-.server-header {
-    background-color: #2A2A2A;
-}
-
-.subscription-header {
-    background-color: #343434;
-}
-
-.server-cards-container {
-    display: flex;
-    overflow-x: auto;
-    max-width: 100%;
-    gap: 20px;
-}
+/* Estilos adicionais para manter alguns dos elementos já definidos */
 
 .server-card {
     background-color: #1e1e1e;
     border-radius: 8px;
     padding: 20px;
-    width: 300px;
+    width: 300px; /* Mantém a largura dos cards */
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-width: 300px; /* Ajuste para manter os cartões uniformes */
-    max-height: 400px; /* Limite de altura */
+    margin-bottom: 20px; /* Espaçamento entre os cards */
 }
 
 .server-card img {
@@ -130,14 +119,13 @@ body {
 .progress-bar {
     background-color: #333;
     border-radius: 8px;
-    margin: 10px 0;
     width: 100%;
     height: 20px;
     overflow: hidden;
     position: relative;
     display: flex;
-    align-items: center; /* Centraliza o texto verticalmente */
-    justify-content: center; /* Centraliza o texto horizontalmente */
+    align-items: center;
+    justify-content: center;
     color: #fff;
 }
 
@@ -155,12 +143,7 @@ body {
     z-index: 2; /* Garante que o texto fique sobre a barra de progresso */
 }
 
-.server-description {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.connect-button {
+.connect-button, .subscription-button {
     background-color: #EC4D2D;
     color: #ffffff;
     border: none;
@@ -171,53 +154,21 @@ body {
     transition: background-color 0.3s;
 }
 
-.connect-button:hover {
+.connect-button:hover, .subscription-button:hover {
     background-color: #c5533c;
 }
 
-.subscription-section {
-    text-align: center;
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    padding: 20px;
-    width: 300px;
-    margin-bottom: 20px;
-}
+/* Responsividade para telas menores */
+@media (max-width: 800px) {
+    .main-container {
+        flex-direction: column;
+    }
 
-.subscription-section ul {
-    list-style-type: none;
-    padding: 0;
-}
+    .left-column, .right-column {
+        flex: 1 0 100%;
+    }
 
-.subscription-section ul li {
-    margin: 5px 0;
-}
-
-.subscription-button {
-    display: inline-block;
-    margin: 10px 5px;
-    padding: 10px 20px;
-    color: white;
-    font-size: 16px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    border: none;
-    cursor: pointer;
-}
-
-.pagseguro {
-    background-color: #FFC801; /* Cor característica do PagSeguro */
-}
-
-.paypal {
-    background-color: #003087; /* Cor primária do PayPal */
-}
-
-.pagseguro:hover, .paypal:hover {
-    opacity: 0.9;
-}
-
-.fa-pagseguro, .fa-paypal {
-    margin-right: 8px;
+    .servers-section, .discord-section, .subscriptions-section, .staff-section {
+        height: auto;
+    }
 }
