@@ -20,6 +20,8 @@ body {
 .footer {
     text-align: center;
     justify-content: center; /* Centraliza o texto no rodapé */
+    width: 100%; /* Largura total */
+    font-size: 11px; /* Tamanho da fonte ajustado */
 }
 
 .header h1, .footer p {
@@ -46,6 +48,21 @@ body {
     padding: 20px;
 }
 
+.servers-discord-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.servers-section {
+    flex: 1;
+}
+
+.discord-widget {
+    width: 350px;
+}
+
 .section-header {
     width: 100%;
     text-align: center;
@@ -61,13 +78,11 @@ body {
     background-color: #343434;
 }
 
-.servers-section {
+.server-cards-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    overflow-x: auto;
+    max-width: 100%;
     gap: 20px;
-    width: 100%;
-    margin-bottom: 20px;
 }
 
 .server-card {
@@ -79,6 +94,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-width: 300px; /* Ajuste para manter os cartões uniformes */
+    max-height: 400px; /* Limite de altura */
 }
 
 .server-card img {
