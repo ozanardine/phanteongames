@@ -102,6 +102,14 @@ body {
     font-weight: bold;
 }
 
+.status-tag.online {
+    background-color: green;
+}
+
+.status-tag.offline {
+    background-color: red;
+}
+
 .progress-bar {
     background-color: #333;
     border-radius: 8px;
