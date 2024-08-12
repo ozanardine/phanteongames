@@ -1,49 +1,41 @@
-const RCON_PASSWORD = '968570';
-const SERVER_IP = '154.127.54.57';
-const RCON_PORT = 28016;
+const SERVER_ID = '28926430'; // ID do seu servidor no BattleMetrics
+const API_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjVkYWQxOTZjZjM0NGM5NWQiLCJpYXQiOjE3MjM0MzE1OTYsIm5iZiI6MTcyMzQzMTU5NiwiaXNzIjoiaHR0cHM6Ly93d3cuYmF0dGxlbWV0cmljcy5jb20iLCJzdWIiOiJ1cm46dXNlcjoxNzI3NzAifQ.QaKllPjTEj0HHLbbh5BI1ePZ9GqO9FJ3MjnY_DMDM0c';
 
-async function connectWebRCON() {
-    const socket = new WebSocket(`ws://${SERVER_IP}:${RCON_PORT}/${RCON_PASSWORD}`);
+async function fetchServerData() {
+    try {
+        const response = await fetch(`https://api.battlemetrics.com/servers/${SERVER_ID}`, {
+            headers: {
+                'Authorization': `Bearer ${API_TOKEN}`
+            }
+        });
 
-    socket.onopen = () => {
-        console.log('Conectado ao WebRCON');
-        // Envie o comando para obter a lista de jogadores
-        socket.send(JSON.stringify({ Identifier: 1, Message: "playerlist", Name: "WebRcon" }));
-    };
-
-    socket.onmessage = (event) => {
-        const response = JSON.parse(event.data);
-        if (response.Identifier === 1) {
-            const playerData = JSON.parse(response.Message);
-            console.log(playerData);
-            // Atualize as informações no seu site
-            updatePlayerInfo(playerData);
+        if (!response.ok) {
+            throw new Error('Erro ao buscar dados do servidor');
         }
-    };
 
-    socket.onerror = (error) => {
-        console.error('Erro no WebRCON:', error);
-    };
+        const data = await response.json();
+        const serverData = data.data.attributes;
 
-    socket.onclose = () => {
-        console.log('Conexão com o WebRCON fechada');
-        // Tentar reconectar após algum tempo
-        setTimeout(connectWebRCON, 5000);
-    };
+        // Exibir informações no site
+        updateServerInfo(serverData);
+    } catch (error) {
+        console.error('Erro:', error);
+    }
 }
 
-function updatePlayerInfo(playerData) {
-    const playersOnline = playerData.Players.length;
-    const maxPlayers = 100; // Defina a capacidade máxima de jogadores do seu servidor
+function updateServerInfo(serverData) {
+    const playersOnline = serverData.players;
+    const maxPlayers = serverData.maxPlayers;
+    const serverName = serverData.name;
+    const serverStatus = serverData.status;
 
-    // Atualize a barra de progresso e a descrição
     const progressElement = document.getElementById('playerProgress1');
     const percentage = (playersOnline / maxPlayers) * 100;
     progressElement.style.width = percentage + '%';
 
     const serverDescriptionElement = document.getElementById('serverDescription1');
-    serverDescriptionElement.textContent = `Rust Server #1 - ${playersOnline}/${maxPlayers} Jogadores Online`;
+    serverDescriptionElement.textContent = `${serverName} - ${playersOnline}/${maxPlayers} Jogadores Online - Status: ${serverStatus}`;
 }
 
-// Chamada inicial para conectar ao WebRCON
-connectWebRCON();
+// Chamada inicial para buscar dados
+fetchServerData();
