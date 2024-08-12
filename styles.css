@@ -1,35 +1,18 @@
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 0 0 60px 0; /* Espaço extra na parte inferior para o rodapé */
     background-color: #121212;
     color: #ffffff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
-    overflow-y: auto; /* Habilita a barra de rolagem vertical no corpo do documento */
-}
-
-/* Personalização da barra de rolagem */
-::-webkit-scrollbar {
-    width: 8px; /* Largura da barra de rolagem */
-    height: 8px; /* Altura da barra de rolagem para áreas horizontais */
-}
-
-::-webkit-scrollbar-track {
-    background: #2e2e2e; /* Cor de fundo da trilha da barra de rolagem */
-}
-
-::-webkit-scrollbar-thumb {
-    background: #EC4D2D; /* Cor do indicador de rolagem */
-    border-radius: 4px;
 }
 
 .header, .footer {
     background-color: #EC4D2D;
-    padding: 10px;
-    height: 60px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,15 +20,17 @@ body {
 }
 
 .footer {
-    position:fixed;
-    z-index: 99999;
+    position: fixed; /* Fixa o rodapé na parte inferior da tela */
+    bottom: 0; /* Alinha na parte inferior */
+    left: 0;
     text-align: center;
     font-size: 11px;
+    height: 60px; /* Altura fixa para o rodapé */
 }
 
 .main-container {
-    display: flex;
     flex: 1;
+    display: flex;
     flex-wrap: wrap;
 }
 
@@ -53,45 +38,33 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    max-width: 50%;
 }
 
 .servers-section, .discord-section, .subscriptions-section, .staff-section {
     padding: 10px;
-    height: 600px; /* Altura máxima dos blocos */
-    overflow-x: auto; /* Ativa rolagem horizontal */
-    overflow-y: auto; /* Ativa rolagem vertical */
+    height: 500px; /* Altura limitada com rolagem */
+    overflow-x: auto; /* Habilita rolagem horizontal se necessário */
+    overflow-y: auto; /* Habilita rolagem vertical se necessário */
 }
 
-.servers-section {
-    background-color: #333;
+/* Personalização da barra de rolagem */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
 }
 
-.discord-section {
-    background-color: #2a2a2a;
+::-webkit-scrollbar-track {
+    background: #2e2e2e;
 }
 
-.subscriptions-section {
-    background-color: #343434;
-}
-
-.staff-section {
-    background-color: #404040;
-}
-
-.server-card {
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    padding: 10px;
-    width: 300px; /* Largura fixa do card do servidor */
-    height: auto; /* Altura fixa do card do servidor */
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: inline-block; /* Permite que os cards fiquem lado a lado */
+::-webkit-scrollbar-thumb {
+    background: #EC4D2D;
+    border-radius: 4px;
 }
 
 .menu {
-    margin-left: -500px;
+    margin-left: 0; /* Ajusta a margem esquerda do menu */
+    flex-grow: 1; /* Permite que o menu cresça conforme necessário */
 }
 
 .menu a {
@@ -103,6 +76,17 @@ body {
 
 .menu a:hover {
     color: #e0e0e0;
+}
+
+.server-card {
+    width: 300px;
+    height: 400px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: inline-block;
 }
 
 @media (max-width: 800px) {
