@@ -81,15 +81,18 @@ body {
     border-radius: 10px;
     padding: 20px;
     width: 300px; /* Largura fixa do card do servidor */
-    height: 450px; /* Altura fixa do card do servidor */
+    height: 500px; /* Altura fixa do card do servidor */
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: inline-block; /* Permite que os cards fiquem lado a lado */
 }
 
+.menu {
+    margin-left: -150px;
+}
+
 .menu a {
-    margin-left: 150px;
-    padding: 5px;
+    margin: 0 10px;
     text-decoration: none;
     color: #ffffff;
     transition: color 0.3s;
