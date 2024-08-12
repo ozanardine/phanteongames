@@ -1,50 +1,24 @@
+:root {
+    --primary-color: #EC4D2D;
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --scrollbar-color: #EC4D2D;
+    --scrollbar-track-color: #2e2e2e;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0 0 60px 0; /* Espaço extra na parte inferior para o rodapé */
-    background-color: #121212;
-    color: #ffffff;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
-}
-
-.header, .footer {
-    background-color: #EC4D2D;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.footer {
-    position: fixed; /* Fixa o rodapé na parte inferior da tela */
-    bottom: 0; /* Alinha na parte inferior */
-    left: 0;
-    text-align: center;
-    font-size: 11px;
-    height: 60px; /* Altura fixa para o rodapé */
-}
-
-.main-container {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.left-column, .right-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.servers-section, .discord-section, .subscriptions-section, .staff-section {
-    padding: 10px;
-    height: 500px; /* Altura limitada com rolagem */
-    overflow-x: auto; /* Habilita rolagem horizontal se necessário */
-    overflow-y: auto; /* Habilita rolagem vertical se necessário */
+    overflow-y: auto; /* Habilita a barra de rolagem vertical no corpo do documento */
+    position: relative;
+    padding-bottom: 60px; /* Espaço para o footer */
 }
 
 /* Personalização da barra de rolagem */
@@ -54,17 +28,85 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #2e2e2e;
+    background: var(--scrollbar-track-color);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #EC4D2D;
+    background: var(--scrollbar-color);
     border-radius: 4px;
 }
 
+.header, .footer {
+    background-color: var(--primary-color);
+    padding: 10px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.footer {
+    text-align: center;
+    font-size: 11px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.main-container {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    padding: 10px;
+}
+
+.servers-section, .discord-section, .subscriptions-section, .staff-section {
+    padding: 10px;
+    height: 600px;
+    overflow-x: auto;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.servers-section {
+    background-color: #333;
+}
+
+.discord-section {
+    background-color: #2a2a2a;
+}
+
+.subscriptions-section {
+    background-color: #343434;
+}
+
+.staff-section {
+    background-color: #404040;
+}
+
+.server-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 10px;
+    width: 300px;
+    height: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: inline-block;
+}
+
 .menu {
-    margin-left: 0; /* Ajusta a margem esquerda do menu */
-    flex-grow: 1; /* Permite que o menu cresça conforme necessário */
+    margin-left: 20px;
+    display: flex;
 }
 
 .menu a {
@@ -76,17 +118,6 @@ body {
 
 .menu a:hover {
     color: #e0e0e0;
-}
-
-.server-card {
-    width: 300px;
-    height: 400px;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: inline-block;
 }
 
 @media (max-width: 800px) {
@@ -104,7 +135,6 @@ body {
         padding: 10px;
     }
 }
-
 
 /* Estilos adicionais para manter alguns dos elementos já definidos */
 
@@ -151,7 +181,7 @@ body {
 }
 
 .progress {
-    background-color: #EC4D2D;
+    background-color: var(--primary-color);
     height: 100%;
     width: 0%; /* A largura é ajustada pelo JavaScript */
     position: absolute;
@@ -165,7 +195,7 @@ body {
 }
 
 .connect-button, .subscription-button {
-    background-color: #EC4D2D;
+    background-color: var(--primary-color);
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -177,4 +207,36 @@ body {
 
 .connect-button:hover, .subscription-button:hover {
     background-color: #c5533c;
+}
+
+/* Estilo para a seção de equipe */
+.team-member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+}
+
+.team-member img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.team-member .info {
+    color: #fff;
+}
+
+.team-member .info h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.team-member .info p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
 }
