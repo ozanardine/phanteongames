@@ -2,79 +2,91 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212; /* Tema dark */
+    background-color: #121212;
     color: #ffffff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    overflow-x: hidden; /* Remove o scroll horizontal */
+    overflow-x: hidden;
+    overflow-y: auto; /* Habilita a barra de rolagem vertical no corpo do documento */
 }
 
-.header {
+/* Personalização da barra de rolagem */
+::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+    height: 8px; /* Altura da barra de rolagem para áreas horizontais */
+}
+
+::-webkit-scrollbar-track {
+    background: #2e2e2e; /* Cor de fundo da trilha da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #EC4D2D; /* Cor do indicador de rolagem */
+    border-radius: 4px;
+}
+
+.header, .footer {
     background-color: #EC4D2D;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    box-sizing: border-box; /* Inclui padding na largura */
 }
 
 .footer {
     text-align: center;
     font-size: 11px;
-    background-color: #222; /* Estilo específico para o footer */
-    padding: 10px 0;
-    width: 100%;
-    color: #fff;
 }
 
 .main-container {
     display: flex;
     flex: 1;
-    flex-wrap: wrap; /* Permite ajuste automático de layout para telas menores */
-    box-sizing: border-box;
+    flex-wrap: wrap;
 }
 
 .left-column, .right-column {
     flex: 1;
     display: flex;
     flex-direction: column;
-    max-width: 50%; /* Garante que cada coluna não ultrapasse metade da largura da tela */
+    max-width: 50%;
+}
+
+.servers-section, .discord-section, .subscriptions-section, .staff-section {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    height: 500px; /* Altura máxima dos blocos */
+    overflow-x: auto; /* Ativa rolagem horizontal */
+    overflow-y: auto; /* Ativa rolagem vertical */
 }
 
 .servers-section {
     background-color: #333;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
 }
 
 .discord-section {
     background-color: #2a2a2a;
-    padding: 20px;
-    border-radius: 8px;
 }
 
 .subscriptions-section {
     background-color: #343434;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
 }
 
 .staff-section {
     background-color: #404040;
-    padding: 20px;
-    border-radius: 8px;
 }
 
 .server-card {
     background-color: #1e1e1e;
     border-radius: 10px;
     padding: 20px;
+    width: 300px; /* Largura fixa do card do servidor */
+    height: 400px; /* Altura fixa do card do servidor */
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: inline-block; /* Permite que os cards fiquem lado a lado */
 }
 
 .menu a {
@@ -95,7 +107,7 @@ body {
     }
 
     .servers-section, .discord-section, .subscriptions-section, .staff-section {
-        width: 100%; /* Ajusta para ocupar toda a largura disponível em telas menores */
+        width: 100%;
         margin-bottom: 10px;
     }
 
@@ -103,6 +115,7 @@ body {
         padding: 10px;
     }
 }
+
 
 /* Estilos adicionais para manter alguns dos elementos já definidos */
 
