@@ -28,7 +28,7 @@ body {
 
 .header, .footer {
     background-color: #EC4D2D;
-    padding: 10px 20px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,9 +55,7 @@ body {
 
 .servers-section, .discord-section, .subscriptions-section, .staff-section {
     padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    height: 500px; /* Altura máxima dos blocos */
+    height: 600px; /* Altura máxima dos blocos */
     overflow-x: auto; /* Ativa rolagem horizontal */
     overflow-y: auto; /* Ativa rolagem vertical */
 }
@@ -90,7 +88,8 @@ body {
 }
 
 .menu a {
-    margin: 0 10px;
+    margin-left: 50px;
+    padding: 10px;
     text-decoration: none;
     color: #ffffff;
     transition: color 0.3s;
