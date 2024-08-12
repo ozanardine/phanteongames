@@ -25,30 +25,26 @@ async function fetchServerData() {
 
 function updateServerInfo(serverData) {
     const playersOnline = serverData.players;
-    const maxPlayers = 50; // Defina a capacidade máxima de jogadores do seu servidor
+    const maxPlayers = 50; // Sua capacidade máxima de jogadores
     const serverName = serverData.name;
     const serverStatus = serverData.status;
-    const mapInfo = `Mapa: ${serverData.details.map} | Tamanho: ${serverData.details.mapSize} | Seed: ${serverData.details.mapSeed}`;
+    const map = serverData.details.map;
+    const seed = serverData.details.mapSeed;
+    const size = serverData.details.mapSize;
 
     // Atualizar status
     const statusTag = document.getElementById('serverStatus1');
     statusTag.textContent = serverStatus.charAt(0).toUpperCase() + serverStatus.slice(1);
-    statusTag.style.backgroundColor = serverStatus === 'online' ? 'green' : 'red';
-
-    // Atualizar progresso e quantidade de jogadores
+    statusTag.className = `status-tag ${serverStatus}`;
     const progressElement = document.getElementById('playerProgress1');
     const percentage = (playersOnline / maxPlayers) * 100;
     progressElement.style.width = percentage + '%';
     progressElement.textContent = `${playersOnline}/${maxPlayers}`;
-
-    // Atualizar descrição do servidor
     const serverDescriptionElement = document.getElementById('serverDescription1');
     serverDescriptionElement.textContent = serverName;
-
-    // Atualizar informações do mapa
     const serverMapInfoElement = document.getElementById('serverMapInfo');
-    serverMapInfoElement.textContent = mapInfo;
+    serverMapInfoElement.innerHTML = `Map: ${map} | Seed: ${seed} | Size: ${size}`;
 }
 
-// Chamada inicial para buscar dados
 fetchServerData();
+
