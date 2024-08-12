@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* Remove o scroll horizontal */
 }
 
 .header, .footer {
@@ -20,13 +21,13 @@ body {
 
 .footer {
     text-align: center;
-    font-size: 11px; /* Tamanho da fonte ajustado */
+    font-size: 11px;
 }
 
 .main-container {
     display: flex;
     flex: 1;
-    flex-wrap: wrap; /* Permite que os blocos se ajustem ao tamanho da tela */
+    flex-wrap: wrap; /* Permite ajuste automático de layout para telas menores */
 }
 
 .left-column, .right-column {
@@ -36,74 +37,33 @@ body {
 }
 
 .servers-section, .discord-section, .subscriptions-section, .staff-section {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow-y: auto; /* Adiciona scroll vertical se necessário */
     padding: 20px;
-    border: 1px solid #333; /* Adiciona borda para melhor visualização */
+    overflow-y: auto; /* Adiciona scroll vertical se necessário */
 }
-
-.servers-section {
-    background-color: #1e1e1e;
-}
-
-.discord-section {
-    background-color: #2a2a2a;
-}
-
-.subscriptions-section {
-    background-color: #343434;
-}
-
-.staff-section {
-    background-color: #404040;
-}
-
-.menu a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #ffffff;
-    transition: color 0.3s;
-}
-
-.menu a:hover {
-    color: #e0e0e0;
-}
-
-/* Estilos adicionais para manter alguns dos elementos já definidos */
 
 .server-card {
-    background-color: #1e1e1e;
-    border-radius: 8px;
+    background-color: #333; /* Cor de fundo para os cards */
+    border-radius: 10px; /* Cantos arredondados */
     padding: 20px;
-    width: 300px; /* Mantém a largura dos cards */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 20px; /* Espaçamento entre os cards */
-}
-
-.server-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    width: 90%; /* Ajusta a largura para evitar overflow */
+    margin: 0 auto; /* Centraliza o card */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra para destacar o card */
 }
 
 .server-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .status-tag {
     padding: 5px 10px;
     border-radius: 5px;
-    color: white;
     font-size: 14px;
     font-weight: bold;
 }
@@ -117,12 +77,11 @@ body {
 }
 
 .progress-bar {
-    background-color: #333;
+    background-color: #555;
     border-radius: 8px;
     width: 100%;
     height: 20px;
     overflow: hidden;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,7 +91,7 @@ body {
 .progress {
     background-color: #EC4D2D;
     height: 100%;
-    width: 0%; /* A largura é ajustada pelo JavaScript */
+    width: 0%;
     position: absolute;
     left: 0;
     top: 0;
@@ -140,7 +99,7 @@ body {
 
 .progress-text {
     position: relative;
-    z-index: 2; /* Garante que o texto fique sobre a barra de progresso */
+    z-index: 2;
 }
 
 .connect-button, .subscription-button {
@@ -158,7 +117,6 @@ body {
     background-color: #c5533c;
 }
 
-/* Responsividade para telas menores */
 @media (max-width: 800px) {
     .main-container {
         flex-direction: column;
