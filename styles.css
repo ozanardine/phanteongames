@@ -10,7 +10,7 @@ body {
 }
 
 .header, .footer {
-    background-color: #EC4D2D; /* Cor verde do Spotify */
+    background-color: #EC4D2D; /* Cor do cabeçalho e rodapé */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
