@@ -10,60 +10,119 @@ body {
     overflow-x: hidden; /* Remove o scroll horizontal */
 }
 
-.header, .footer {
+.header {
     background-color: #EC4D2D;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    box-sizing: border-box; /* Inclui padding na largura */
 }
 
 .footer {
     text-align: center;
     font-size: 11px;
+    background-color: #222; /* Estilo específico para o footer */
+    padding: 10px 0;
+    width: 100%;
+    color: #fff;
 }
 
 .main-container {
     display: flex;
     flex: 1;
     flex-wrap: wrap; /* Permite ajuste automático de layout para telas menores */
+    box-sizing: border-box;
 }
 
 .left-column, .right-column {
     flex: 1;
     display: flex;
     flex-direction: column;
+    max-width: 50%; /* Garante que cada coluna não ultrapasse metade da largura da tela */
 }
 
-.servers-section, .discord-section, .subscriptions-section, .staff-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.servers-section {
+    background-color: #333;
     padding: 20px;
-    overflow-y: auto; /* Adiciona scroll vertical se necessário */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.discord-section {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.subscriptions-section {
+    background-color: #343434;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.staff-section {
+    background-color: #404040;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .server-card {
-    background-color: #333; /* Cor de fundo para os cards */
-    border-radius: 10px; /* Cantos arredondados */
+    background-color: #1e1e1e;
+    border-radius: 10px;
     padding: 20px;
-    width: 90%; /* Ajusta a largura para evitar overflow */
-    margin: 0 auto; /* Centraliza o card */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra para destacar o card */
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.menu a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #e0e0e0;
+}
+
+@media (max-width: 800px) {
+    .main-container, .left-column, .right-column {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .servers-section, .discord-section, .subscriptions-section, .staff-section {
+        width: 100%; /* Ajusta para ocupar toda a largura disponível em telas menores */
+        margin-bottom: 10px;
+    }
+
+    .header, .footer {
+        padding: 10px;
+    }
+}
+
+/* Estilos adicionais para manter alguns dos elementos já definidos */
+
+.server-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .server-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 .status-tag {
     padding: 5px 10px;
     border-radius: 5px;
+    color: white;
     font-size: 14px;
     font-weight: bold;
 }
@@ -77,11 +136,12 @@ body {
 }
 
 .progress-bar {
-    background-color: #555;
+    background-color: #333;
     border-radius: 8px;
     width: 100%;
     height: 20px;
     overflow: hidden;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,7 +151,7 @@ body {
 .progress {
     background-color: #EC4D2D;
     height: 100%;
-    width: 0%;
+    width: 0%; /* A largura é ajustada pelo JavaScript */
     position: absolute;
     left: 0;
     top: 0;
@@ -99,7 +159,7 @@ body {
 
 .progress-text {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Garante que o texto fique sobre a barra de progresso */
 }
 
 .connect-button, .subscription-button {
@@ -115,18 +175,4 @@ body {
 
 .connect-button:hover, .subscription-button:hover {
     background-color: #c5533c;
-}
-
-@media (max-width: 800px) {
-    .main-container {
-        flex-direction: column;
-    }
-
-    .left-column, .right-column {
-        flex: 1 0 100%;
-    }
-
-    .servers-section, .discord-section, .subscriptions-section, .staff-section {
-        height: auto;
-    }
 }
