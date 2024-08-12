@@ -25,24 +25,33 @@ async function fetchServerData() {
 
 function updateServerInfo(serverData) {
     const playersOnline = serverData.players;
-    const maxPlayers = 50;
+    const maxPlayers = 50; // Capacidade máxima de jogadores
     const serverStatus = serverData.status;
-    const serverName = serverData.name;  // Nome do servidor do BattleMetrics
+    const serverName = serverData.name; // Nome do servidor do BattleMetrics
 
+    // Atualizar o status e aplicar a classe para coloração
     const statusTag = document.getElementById('serverStatus1');
     statusTag.textContent = serverStatus.charAt(0).toUpperCase() + serverStatus.slice(1);
     statusTag.className = `status-tag ${serverStatus.toLowerCase()}`;
 
-    const progressElement = document.getElementById('playerProgress1');
+    // Atualizar a barra de progresso visual
+    const progressElement = document.getElementById('playerProgress');
     const percentage = (playersOnline / maxPlayers) * 100;
     progressElement.style.width = `${percentage}%`;
-    progressElement.textContent = `${playersOnline}/${maxPlayers}`;
 
+    // Atualizar o texto de progresso, garantindo centralização
+    const progressText = document.getElementById('playerProgressText');
+    progressText.textContent = `${playersOnline}/${maxPlayers}`;
+
+    // Atualizar o nome do servidor exibido
     const serverNameElement = document.getElementById('serverNameDisplay');
-    serverNameElement.textContent = serverName; // Exibir o nome real do servidor
+    serverNameElement.textContent = serverName;
 
+    // Atualizar a descrição breve do servidor
     const serverDescriptionElement = document.getElementById('serverDescription1');
     serverDescriptionElement.textContent = "Descrição breve do servidor aqui.";
 }
 
+// Executar a função para buscar e atualizar os dados quando o documento estiver pronto
 fetchServerData();
+
