@@ -1,7 +1,6 @@
 const STEAM_API_KEY = '2F7E9C9218555BD019C8A15A61F54A22';
 const SERVERS = [
-    { id: 1, ip: '45.88.229.94:28017' },
-    { id: 2, ip: '45.88.229.95:28017' } // Adicione outros servidores conforme necessário
+    { id: 1, ip: '154.127.54.57:28080' }
 ];
 
 // Busca dados do servidor Rust usando a Steam API
@@ -34,8 +33,9 @@ function measurePing(server) {
     const startTime = Date.now();
     const pingText = document.getElementById(`pingText${server.id}`);
     const pingIndicator = document.getElementById(`pingIndicator${server.id}`);
-    
-    fetch('https://api.github.com') // Usar um endpoint rápido para teste
+
+    // Aqui, usamos um serviço que responde rapidamente para medir o ping. Substitua por um endpoint válido.
+    fetch(`https://example.com/ping?server=${server.ip}`) // Simule um endpoint que retorne rapidamente
         .then(() => {
             const ping = Date.now() - startTime;
             pingText.textContent = `Ping: ${ping} ms`;
