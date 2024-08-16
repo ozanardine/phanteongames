@@ -240,3 +240,31 @@ body {
     font-size: 14px;
     color: #ccc;
 }
+
+.rust-alerts-section {
+    background-color: #2a2a2a;
+    padding: 10px;
+    max-height: 500px;
+    overflow-y: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.alerts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alert {
+    background-color: #40444b;
+    padding: 10px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.alert-time {
+    font-weight: bold;
+    margin-right: 5px;
+}
