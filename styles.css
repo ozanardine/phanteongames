@@ -81,10 +81,6 @@ body {
     background-color: #333;
 }
 
-.discord-section {
-    background-color: #2a2a2a;
-}
-
 .subscriptions-section {
     background-color: #343434;
 }
@@ -241,12 +237,25 @@ body {
     color: #ccc;
 }
 
-.rust-alerts-section {
+.discord-section {
     background-color: #2a2a2a;
     padding: 10px;
-    max-height: 500px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.discord-and-alerts {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Espaço entre o iframe e os alertas */
+}
+
+.rust-alerts-section {
+    background-color: #40444b;
+    width: 400px;
+    height: 500px;
     overflow-y: auto;
-    margin-top: 20px;
     border-radius: 8px;
 }
 
@@ -254,10 +263,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 10px;
+    height: 100%;
 }
 
 .alert {
-    background-color: #40444b;
+    background-color: #2f3136;
     padding: 10px;
     border-radius: 8px;
     color: #ffffff;
