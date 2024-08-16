@@ -82,11 +82,11 @@ body {
 }
 
 .subscriptions-section {
-    background-color: #343434;
+    background-color: #333;
 }
 
 .staff-section {
-    background-color: #404040;
+    background-color: #333;
 }
 
 .server-card {
@@ -96,7 +96,7 @@ body {
     width: 300px;
     height: 500px;
     margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(5, 4, 4, 0.1);
     display: inline-block;
 }
 
@@ -238,9 +238,8 @@ body {
 }
 
 .discord-section {
-    background-color: #2a2a2a;
+    background-color: #333;
     padding: 10px;
-    border-radius: 8px;
     display: flex;
     flex-direction: column;
 }
