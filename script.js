@@ -51,39 +51,6 @@ function updateServerInfo(serverData) {
 // Executar a função para buscar e atualizar os dados quando o documento estiver pronto
 fetchServerData();
 
-function saveAlertsToLocalStorage(alerts) {
-    const storedAlerts = JSON.parse(localStorage.getItem('rustAlerts')) || [];
-    const updatedAlerts = storedAlerts.concat(alerts);
-    localStorage.setItem('rustAlerts', JSON.stringify(updatedAlerts));
-}
-
-function loadAlertsFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('rustAlerts')) || [];
-}
-
-function displayAlerts(alerts) {
-    const alertsContainer = document.getElementById('alerts-container');
-    alertsContainer.innerHTML = ''; // Limpa os avisos anteriores
-
-    alerts.forEach(alert => {
-        const alertElement = document.createElement('div');
-        alertElement.classList.add('alert');
-
-        const timeElement = document.createElement('span');
-        timeElement.classList.add('alert-time');
-        timeElement.textContent = alert.timestamp; 
-
-        const messageElement = document.createElement('span');
-        messageElement.classList.add('alert-message');
-        messageElement.textContent = alert.content; 
-
-        alertElement.appendChild(timeElement);
-        alertElement.appendChild(messageElement);
-
-        alertsContainer.appendChild(alertElement);
-    });
-}
-
 async function fetchRustAlerts() {
     const webhookUrl = 'https://discord.com/api/webhooks/1272694239108661380/IzdkLvPkD9dlK3nJNxBTyvwxoWFVHXAb9suHHTOwhha3E3oi-QAykgnMuk8y9YG6cSqm';
 
@@ -94,15 +61,40 @@ async function fetchRustAlerts() {
         }
 
         const data = await response.json();
-        saveAlertsToLocalStorage(data);
-        displayAlerts(loadAlertsFromLocalStorage());
+
+        if (!Array.isArray(data) || data.length === 0) {
+            console.log('Nenhum dado de alerta válido recebido.');
+            return;
+        }
+
+        const alertsContainer = document.getElementById('alerts-container');
+        alertsContainer.innerHTML = ''; // Limpa os avisos anteriores
+
+        data.forEach(alert => {
+            // Verifica se o conteúdo do alerta é válido
+            if (alert && alert.timestamp && alert.content) {
+                const alertElement = document.createElement('div');
+                alertElement.classList.add('alert');
+
+                const timeElement = document.createElement('span');
+                timeElement.classList.add('alert-time');
+                timeElement.textContent = alert.timestamp;
+
+                const messageElement = document.createElement('span');
+                messageElement.classList.add('alert-message');
+                messageElement.textContent = alert.content;
+
+                alertElement.appendChild(timeElement);
+                alertElement.appendChild(messageElement);
+
+                alertsContainer.appendChild(alertElement);
+            }
+        });
+
     } catch (error) {
         console.error('Erro ao buscar alertas do Rust:', error);
     }
 }
-
-// Carregar alertas do localStorage ao iniciar
-displayAlerts(loadAlertsFromLocalStorage());
 
 // Chame a função para buscar alertas a cada 5 segundos
 setInterval(fetchRustAlerts, 5000);
