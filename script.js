@@ -1,8 +1,10 @@
-const SERVER_ID = process.env.BATTLEMETRICS_SERVER_ID;
-const API_TOKEN = process.env.BATTLEMETRICS_API_TOKEN;
-const sheetId = process.env.GOOGLE_SHEET_ID; // ID da planilha
-const sheetName = "Players Database"; // Nome da aba
-const apiKey = process.env.GOOGLE_API_KEY; // Chave da API do Google
+const SERVER_ID = '28926430';
+const API_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjVkYWQxOTZjZjM0NGM5NWQiLCJpYXQiOjE3MjM0MzE1OTYsIm5iZiI6MTcyMzQzMTU5NiwiaXNzIjoiaHR0cHM6Ly93d3cuYmF0dGxlbWV0cmljcy5jb20iLCJzdWIiOiJ1cm46dXNlcjoxNzI3NzAifQ.QaKllPjTEj0HHLbbh5BI1ePZ9GqO9FJ3MjnY_DMDM0c';
+const sheetId = '1eIi_8UMQFVlOAEkYj02z6zPGhLrSpa7Z2R9nBWALBgY';
+const sheetName = "Players Database";
+
+// Extraindo chave de API (se necessário)
+const apiKey = 'e063ec29ad42bfe21eff40a4396f8edf78e0fd10';
 
 // Função para buscar dados do servidor BattleMetrics
 async function fetchServerData() {
