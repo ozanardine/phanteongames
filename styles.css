@@ -84,7 +84,7 @@ body {
     flex-wrap: wrap;
     margin: 0 auto; /* Centraliza o conteúdo principal */
     max-width: 1920px; /* Define uma largura máxima para o conteúdo */
-    padding: 0 20px; /* Espaçamento interno para conteúdo */
+    padding: 0 10px; /* Espaçamento interno para conteúdo */
 }
 
 .left-column, .right-column {
@@ -92,7 +92,7 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 50%;
-    padding: 10px 20px; /* Ajusta o espaçamento interno */
+    padding: 10px 10px; /* Ajusta o espaçamento interno */
 }
 
 .servers-section, .discord-section, .subscriptions-section, .staff-section, .players-section {
