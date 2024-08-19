@@ -173,6 +173,10 @@ body {
     align-items: center;
 }
 
+#serverName1 {
+    margin: 0;
+}
+
 .status-tag {
     padding: 5px 10px;
     border-radius: 5px;
