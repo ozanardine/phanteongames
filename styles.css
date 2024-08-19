@@ -329,9 +329,10 @@ body {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    height: 40px; /* Ajuste da altura para 40px */
+    height: 40px;
     color: #ffffff;
     font-size: 14px;
+    position: relative; /* Para posicionar o número de ranking */
 }
 
 .players-section .player img {
@@ -362,4 +363,27 @@ body {
 
 .player .icon {
     margin-right: 5px;
+}
+
+/* Estilo para o número de ranking */
+.player .rank-number {
+    position: absolute;
+    left: -30px; /* Posiciona o número à esquerda do avatar */
+    font-size: 18px;
+    font-weight: bold;
+    width: 25px;
+    text-align: center;
+}
+
+/* Cores específicas para os três primeiros colocados */
+.player.rank-1 .rank-number {
+    color: gold;
+}
+
+.player.rank-2 .rank-number {
+    color: silver;
+}
+
+.player.rank-3 .rank-number {
+    color: bronze;
 }
