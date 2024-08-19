@@ -118,7 +118,7 @@ async function fetchPlayerData() {
         playersContainer.innerHTML = existingTitle; // Preserve o título
 
         rows.slice(1).forEach(row => { // Ignora a primeira linha (cabeçalhos)
-            const [steamId, avatarUrl, nickname, kills, deaths, tempoOnline, primeiraConexao] = row;
+            const [steamId, avatarUrl, nickname, kills, deaths] = row;
 
             const playerElement = document.createElement('div');
             playerElement.classList.add('player');
@@ -137,10 +137,6 @@ async function fetchPlayerData() {
                     <span class="title"><i class="fas fa-heart-broken icon"></i>Deaths</span>
                     <span class="value">${deaths}</span>
                 </div>
-                <div class="data-item">
-                    <span class="title">Online Desde</span>
-                    <span class="value">${primeiraConexao}</span>
-                </div>
             `;
             playersContainer.appendChild(playerElement);
         });
@@ -148,6 +144,7 @@ async function fetchPlayerData() {
         console.error('Erro ao buscar dados dos jogadores:', error);
     }
 }
+
 
 // Inicializa as funções ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
