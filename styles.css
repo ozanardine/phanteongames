@@ -323,67 +323,69 @@ body {
 }
 
 .players-section .player {
-    background-color: #2a2a2a;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
-    height: 40px;
+    height: 50px; /* Aumenta um pouco a altura para acomodar o novo design */
+    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 10px;
     color: #ffffff;
-    font-size: 14px;
-    position: relative; /* Para posicionar o número de ranking */
+    font-size: 16px;
+    position: relative;
+}
+
+.players-section .player.rank-1 {
+    background-color: #FFD700; /* Ouro para o primeiro lugar */
+}
+
+.players-section .player.rank-2 {
+    background-color: #C0C0C0; /* Prata para o segundo lugar */
+}
+
+.players-section .player.rank-3 {
+    background-color: #CD7F32; /* Bronze para o terceiro lugar */
+}
+
+.players-section .player.rank-default {
+    background-color: #2a2a2a; /* Cor padrão para os outros jogadores */
 }
 
 .players-section .player img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.player .rank-number {
+    font-size: 24px; /* Tamanho maior para o número do ranking */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.rank-number .crown {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+/* Cores das coroas */
+.rank-1 .crown {
+    color: #FFD700; /* Ouro */
+}
+
+.rank-2 .crown {
+    color: #C0C0C0; /* Prata */
+}
+
+.rank-3 .crown {
+    color: #CD7F32; /* Bronze */
 }
 
 .player .data-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    margin-right: 15px;
-}
-
-.player .data-item span.title {
-    font-size: 12px;
-    color: #ccc;
-    margin-bottom: 2px;
-}
-
-.player .data-item span.value {
-    font-size: 14px;
-    color: #ffffff;
-}
-
-.player .icon {
-    margin-right: 5px;
-}
-
-/* Estilo para o número de ranking */
-.player .rank-number {
-    position: absolute;
-    left: -30px; /* Posiciona o número à esquerda do avatar */
-    font-size: 18px;
-    font-weight: bold;
-    width: 25px;
-    text-align: center;
-}
-
-/* Cores específicas para os três primeiros colocados */
-.player.rank-1 .rank-number {
-    color: gold;
-}
-
-.player.rank-2 .rank-number {
-    color: silver;
-}
-
-.player.rank-3 .rank-number {
-    color: bronze;
+    margin-left: 10px;
 }
