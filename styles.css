@@ -171,7 +171,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px; /* Espaçamento de 10px na parte inferior */
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.server-title h2 {
+    margin: 0;
+    flex-grow: 1; /* Permite que o título ocupe todo o espaço disponível */
 }
 
 .status-tag {
@@ -220,6 +226,8 @@ body {
 
 .connect-button, .subscription-button {
     background-color: var(--primary-color);
+    display: block;
+    margin: 20px auto 0 auto;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
