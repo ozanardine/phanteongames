@@ -226,7 +226,7 @@ body {
 
 .connect-button {
     display: block;
-    width: 100px;
+    width: 120px;
     margin: 20px auto 0 auto;
     background-color: var(--primary-color);
     color: #fff;
