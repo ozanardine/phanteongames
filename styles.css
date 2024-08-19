@@ -47,7 +47,7 @@ body {
 
 .header {
     background-color: var(--primary-color);
-    padding: 10px 80px; /* Aumenta o espaçamento à esquerda para trazer o logo e título mais para a direita */
+    padding: 10px 40px; /* Espaçamento uniforme à esquerda e à direita */
     display: flex;
     align-items: center;
     width: 100%;
@@ -81,7 +81,9 @@ body {
     display: flex;
     flex: 1;
     flex-wrap: wrap;
-    padding-left: 40px; /* Espaçamento uniforme à esquerda */
+    margin: 0 auto; /* Centraliza o conteúdo principal */
+    max-width: 1200px; /* Define uma largura máxima para o conteúdo */
+    padding: 0 20px; /* Espaçamento interno para conteúdo */
 }
 
 .left-column, .right-column {
@@ -256,45 +258,49 @@ body {
     border-radius: 12px;
     padding: 30px;
     margin-bottom: 20px;
-    text-align: center;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra mais forte para dar destaque */
+    text-align: left; /* Alinha o texto à esquerda */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .subscriptions-section h2 {
     color: var(--primary-color);
     font-size: 28px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
-.subscriptions-section p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #ddd;
+.subscriptions-section .benefits-list {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
     margin-bottom: 20px;
 }
 
-.subscriptions-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 30px 0;
+.subscriptions-section .benefits-list ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
 }
 
-.subscriptions-section ul li {
+.subscriptions-section .benefits-list ul li {
     font-size: 16px;
     margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding-left: 10px;
+    position: relative;
 }
 
-.subscriptions-section ul li:before {
-    content: "⭐"; /* Adiciona uma estrela antes de cada item da lista */
-    margin-right: 10px;
+.subscriptions-section .benefits-list ul li:before {
+    content: '✔️'; /* Marca de verificação para cada item */
     color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .subscription-button {
-    display: inline-block;
+    display: block; /* Botão centralizado */
+    width: fit-content;
+    margin: 0 auto;
     background-color: var(--primary-color);
     color: #fff;
     padding: 15px 30px;
@@ -307,15 +313,5 @@ body {
 
 .subscription-button:hover {
     background-color: #c5533c;
-    transform: scale(1.05); /* Leve aumento no tamanho ao passar o mouse */
-}
-
-.subscription-button img {
-    vertical-align: middle;
-    margin-right: 10px;
-}
-
-.subscription-button.pagseguro img {
-    width: 180px;
-    height: 25px;
+    transform: scale(1.05);
 }
