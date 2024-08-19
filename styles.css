@@ -54,9 +54,8 @@ body {
     justify-content: flex-start;
 }
 
-.header .logo {
-    height: 40px;
-    margin-right: 15px; /* Mantém um espaçamento adequado entre o logo e o título */
+.logo {
+    height: 70px;
     margin-left: 20px;
 }
 
@@ -290,25 +289,17 @@ body {
     position: relative;
 }
 
-.subscriptions-section .benefits-list ul li:before {
-    content: '⭐'; /* Marca de verificação para cada item */
-    color: var(--primary-color);
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
 .payment-button, .confirm-button {
     display: inline-block;
     background-color: var(--primary-color);
     color: #fff;
-    padding: 15px 30px;
+    padding: 15px 20px;
     border-radius: 8px;
     font-size: 18px;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .payment-button:hover, .confirm-button:hover {
