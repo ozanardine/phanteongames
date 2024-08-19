@@ -45,19 +45,24 @@ body {
     border-radius: 4px;
 }
 
-.header, .footer {
+.header {
     background-color: var(--primary-color);
     padding: 10px;
-    height: 60px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
+    justify-content: flex-start; /* Alinhar todo o conteúdo da header à esquerda */
+}
+
+.header .logo {
+    height: 40px; /* Tamanho do logo */
+    margin-right: 10px; /* Espaço entre o logo e o título */
 }
 
 .header h1 {
     font-family: 'Built Titling', sans-serif;
     font-size: 36px;
+    margin: 0; /* Remover margens para um alinhamento correto */
 }
 
 .footer {
@@ -67,6 +72,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+    margin: 0 auto; /* Centralizar o texto */
 }
 
 .main-container {
@@ -115,7 +121,7 @@ body {
 }
 
 .menu {
-    margin-left: 20px;
+    margin-left: auto;
     display: flex;
 }
 
