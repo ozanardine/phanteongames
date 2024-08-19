@@ -82,7 +82,7 @@ body {
     flex: 1;
     flex-wrap: wrap;
     margin: 0 auto; /* Centraliza o conteúdo principal */
-    max-width: 1600px; /* Define uma largura máxima para o conteúdo */
+    max-width: 1920px; /* Define uma largura máxima para o conteúdo */
     padding: 0 20px; /* Espaçamento interno para conteúdo */
 }
 
@@ -260,13 +260,6 @@ body {
     margin-bottom: 20px;
     text-align: left; /* Alinha o texto à esquerda */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.subscriptions-section h2 {
-    color: var(--primary-color);
-    font-size: 28px;
-    margin-bottom: 20px;
-    text-align: center;
 }
 
 .subscriptions-section .benefits-list {
