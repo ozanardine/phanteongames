@@ -117,13 +117,25 @@ async function fetchPlayerData() {
         const existingTitle = playersContainer.querySelector('h2').outerHTML;
         playersContainer.innerHTML = existingTitle; // Preserve o título
 
-        rows.slice(1).forEach(row => { // Ignora a primeira linha (cabeçalhos)
+        rows.slice(1).forEach((row, index) => { // Ignora a primeira linha (cabeçalhos)
             const [steamId, avatarUrl, nickname, kills, deaths] = row;
 
             const playerElement = document.createElement('div');
             playerElement.classList.add('player');
 
+            // Adiciona classes de ranking para os três primeiros colocados
+            if (index === 0) {
+                playerElement.classList.add('rank-1');
+            } else if (index === 1) {
+                playerElement.classList.add('rank-2');
+            } else if (index === 2) {
+                playerElement.classList.add('rank-3');
+            }
+
+            // Adiciona o número de ranking
+            const rankNumber = index + 1;
             playerElement.innerHTML = `
+                <span class="rank-number">${rankNumber}</span>
                 <img src="${avatarUrl}" alt="${nickname} Avatar">
                 <div class="data-item">
                     <span class="title">Nickname</span>
@@ -144,7 +156,6 @@ async function fetchPlayerData() {
         console.error('Erro ao buscar dados dos jogadores:', error);
     }
 }
-
 
 // Inicializa as funções ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
