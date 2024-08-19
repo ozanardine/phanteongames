@@ -148,11 +148,11 @@ async function fetchPlayerData() {
                     <span class="value">${nickname}</span>
                 </div>
                 <div class="data-item">
-                    <span class="title"><i class="fas fa-skull icon"></i>Kills</span>
+                    <span class="title"><i class="fas fa-skull icon"></i> Kills</span>
                     <span class="value">${kills}</span>
                 </div>
                 <div class="data-item">
-                    <span class="title"><i class="fas fa-heart-broken icon"></i>Deaths</span>
+                    <span class="title"><i class="fas fa-heart-broken icon"></i> Deaths</span>
                     <span class="value">${deaths}</span>
                 </div>
             `;
