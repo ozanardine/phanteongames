@@ -107,7 +107,8 @@ async function fetchPlayerData() {
     try {
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error('Erro ao buscar dados da planilha Google Sheets');
+            const errorText = await response.text(); // Captura o texto do erro
+            throw new Error(`Erro ao buscar dados da planilha Google Sheets: ${errorText}`);
         }
         const data = await response.json();
         const rows = data.values;
