@@ -1,6 +1,10 @@
-const SERVER_ID = '28926430'; // ID do seu servidor no BattleMetrics
-const API_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IjVkYWQxOTZjZjM0NGM5NWQiLCJpYXQiOjE3MjM0MzE1OTYsIm5iZiI6MTcyMzQzMTU5NiwiaXNzIjoiaHR0cHM6Ly93d3cuYmF0dGxlbWV0cmljcy5jb20iLCJzdWIiOiJ1cm46dXNlcjoxNzI3NzAifQ.QaKllPjTEj0HHLbbh5BI1ePZ9GqO9FJ3MjnY_DMDM0c'; // Sua chave de API do BattleMetrics
+const SERVER_ID = process.env.BATTLEMETRICS_SERVER_ID;
+const API_TOKEN = process.env.BATTLEMETRICS_API_TOKEN;
+const sheetId = process.env.GOOGLE_SHEET_ID; // ID da planilha
+const sheetName = "Players Database"; // Nome da aba
+const apiKey = process.env.GOOGLE_API_KEY; // Chave da API do Google
 
+// Função para buscar dados do servidor BattleMetrics
 async function fetchServerData() {
     try {
         const response = await fetch(`https://api.battlemetrics.com/servers/${SERVER_ID}`, {
@@ -48,9 +52,7 @@ function updateServerInfo(serverData) {
     serverNameElement.textContent = serverName;
 }
 
-// Executar a função para buscar e atualizar os dados quando o documento estiver pronto
-fetchServerData();
-
+// Função para buscar alertas do Rust
 async function fetchRustAlerts() {
     const webhookUrl = 'https://discord.com/api/webhooks/1272694239108661380/IzdkLvPkD9dlK3nJNxBTyvwxoWFVHXAb9suHHTOwhha3E3oi-QAykgnMuk8y9YG6cSqm';
 
@@ -96,6 +98,48 @@ async function fetchRustAlerts() {
     }
 }
 
+// Função para buscar dados dos jogadores no Google Sheets
+async function fetchPlayerData() {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`;
+    
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Erro ao buscar dados da planilha Google Sheets');
+        }
+        const data = await response.json();
+        const rows = data.values;
+
+        const playersContainer = document.querySelector('.players-section');
+        playersContainer.innerHTML = ''; // Limpa a seção antes de adicionar novos dados
+
+        rows.slice(1).forEach(row => { // Ignora a primeira linha (cabeçalhos)
+            const [steamId, avatarUrl, nickname, kills, deaths, tempoOnline, primeiraConexao] = row;
+
+            const playerElement = document.createElement('div');
+            playerElement.classList.add('player');
+
+            playerElement.innerHTML = `
+                <img src="${avatarUrl}" alt="${nickname} Avatar">
+                <h3>${nickname}</h3>
+                <p>Kills: ${kills}</p>
+                <p>Deaths: ${deaths}</p>
+                <p>Tempo Online: ${tempoOnline} min</p>
+                <p>Primeira Conexão: ${primeiraConexao}</p>
+            `;
+            playersContainer.appendChild(playerElement);
+        });
+    } catch (error) {
+        console.error('Erro ao buscar dados dos jogadores:', error);
+    }
+}
+
+// Inicializa as funções ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    fetchServerData();
+    fetchRustAlerts();
+    fetchPlayerData();
+});
+
 // Chame a função para buscar alertas a cada 5 segundos
 setInterval(fetchRustAlerts, 5000);
-fetchRustAlerts(); // Busca inicial
