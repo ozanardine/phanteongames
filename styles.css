@@ -237,44 +237,23 @@ body {
     color: #ccc;
 }
 
-.discord-section {
+.players-section {
     background-color: #333;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.discord-and-alerts {
-    display: flex;
-    flex-direction: row;
-    gap: 10px; /* Espaço entre o iframe e os alertas */
-}
-
-.rust-alerts-section {
-    background-color: #40444b;
-    width: 400px;
-    height: 500px;
+    height: 600px;
+    overflow-x: auto;
     overflow-y: auto;
-    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
-.alerts-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    height: 100%;
-}
-
-.alert {
-    background-color: #2f3136;
+.players-section .player {
+    background-color: #2a2a2a;
     padding: 10px;
     border-radius: 8px;
-    color: #ffffff;
-    font-size: 14px;
+    margin-bottom: 15px;
 }
 
-.alert-time {
-    font-weight: bold;
-    margin-right: 5px;
+.subscription-button.pagseguro img {
+    width: 180px;
+    height: 25px;
 }
