@@ -118,7 +118,7 @@ async function fetchPlayerData() {
         playersContainer.innerHTML = existingTitle;
 
         rows.slice(1).forEach((row, index) => {
-            const [steamId, avatarUrl, nickname, kills, deaths, status] = row;
+            const [steamId, avatarUrl, nickname, kills, deaths, status, hoursServer] = row;
 
             const playerElement = document.createElement('div');
             playerElement.classList.add('player');
@@ -152,6 +152,10 @@ async function fetchPlayerData() {
                 <div class="data-item">
                     <span class="title"><i class="fas fa-heart-broken icon"></i> Deaths</span>
                     <span class="value">${deaths}</span>
+                </div>
+                <div class="data-item">
+                    <span class="title"><i class="fas fa-hourglass-half icon"></i> Hours on Server</span>
+                    <span class="value">${hoursServer} hrs</span>
                 </div>
                 <div class="player-status">
                     <span class="status-indicator ${status === 'online' ? 'online' : 'offline'}"></span>
