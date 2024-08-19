@@ -113,8 +113,10 @@ async function fetchPlayerData() {
         const data = await response.json();
         const rows = data.values;
 
+        // Mantenha o título "Leaderboard"
         const playersContainer = document.querySelector('.players-section');
-        playersContainer.innerHTML = ''; // Limpa a seção antes de adicionar novos dados
+        const existingTitle = playersContainer.querySelector('h2').outerHTML;
+        playersContainer.innerHTML = existingTitle; // Preserve o título
 
         rows.slice(1).forEach(row => { // Ignora a primeira linha (cabeçalhos)
             const [steamId, avatarUrl, nickname, kills, deaths, tempoOnline, primeiraConexao] = row;
