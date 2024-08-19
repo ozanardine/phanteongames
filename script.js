@@ -113,7 +113,6 @@ async function fetchPlayerData() {
         const data = await response.json();
         const rows = data.values;
 
-        // Mantenha o título "Leaderboard"
         const playersContainer = document.querySelector('.players-section');
         const existingTitle = playersContainer.querySelector('h2').outerHTML;
         playersContainer.innerHTML = existingTitle; // Preserve o título
@@ -126,11 +125,22 @@ async function fetchPlayerData() {
 
             playerElement.innerHTML = `
                 <img src="${avatarUrl}" alt="${nickname} Avatar">
-                <h3>${nickname}</h3>
-                <p>Kills: ${kills}</p>
-                <p>Deaths: ${deaths}</p>
-                <p>Tempo Online: ${tempoOnline} min</p>
-                <p>Primeira Conexão: ${primeiraConexao}</p>
+                <div class="data-item">
+                    <span class="title">Nickname</span>
+                    <span class="value">${nickname}</span>
+                </div>
+                <div class="data-item">
+                    <span class="title"><i class="fas fa-skull icon"></i>Kills</span>
+                    <span class="value">${kills}</span>
+                </div>
+                <div class="data-item">
+                    <span class="title"><i class="fas fa-heart-broken icon"></i>Deaths</span>
+                    <span class="value">${deaths}</span>
+                </div>
+                <div class="data-item">
+                    <span class="title">Online Desde</span>
+                    <span class="value">${primeiraConexao}</span>
+                </div>
             `;
             playersContainer.appendChild(playerElement);
         });
