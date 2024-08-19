@@ -4,7 +4,7 @@ const sheetId = '1eIi_8UMQFVlOAEkYj02z6zPGhLrSpa7Z2R9nBWALBgY';
 const sheetName = "Players Database";
 
 // Extraindo chave de API (se necessário)
-const apiKey = 'e063ec29ad42bfe21eff40a4396f8edf78e0fd10';
+const apiKey = 'AIzaSyANlTK849OfuL11dkyRZF5xo5DVqfuVDNE';
 
 // Função para buscar dados do servidor BattleMetrics
 async function fetchServerData() {
