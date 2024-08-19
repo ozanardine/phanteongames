@@ -107,7 +107,7 @@ async function fetchPlayerData() {
     try {
         const response = await fetch(url);
         if (!response.ok) {
-            const errorText = await response.text(); // Captura o texto do erro
+            const errorText = await response.text();
             throw new Error(`Erro ao buscar dados da planilha Google Sheets: ${errorText}`);
         }
         const data = await response.json();
@@ -115,15 +115,14 @@ async function fetchPlayerData() {
 
         const playersContainer = document.querySelector('.players-section');
         const existingTitle = playersContainer.querySelector('h2').outerHTML;
-        playersContainer.innerHTML = existingTitle; // Preserve o título
+        playersContainer.innerHTML = existingTitle;
 
-        rows.slice(1).forEach((row, index) => { // Ignora a primeira linha (cabeçalhos)
+        rows.slice(1).forEach((row, index) => {
             const [steamId, avatarUrl, nickname, kills, deaths] = row;
 
             const playerElement = document.createElement('div');
             playerElement.classList.add('player');
 
-            // Adiciona classes de ranking para os três primeiros colocados
             if (index === 0) {
                 playerElement.classList.add('rank-1');
             } else if (index === 1) {
@@ -134,9 +133,8 @@ async function fetchPlayerData() {
                 playerElement.classList.add('rank-default');
             }
 
-            // Adiciona o número de ranking e a coroa correspondente
             const rankNumber = index + 1;
-            const crownIcon = index === 0 ? 'fas fa-crown' : index === 1 ? 'fas fa-crown' : index === 2 ? 'fas fa-crown' : '';
+            const crownIcon = index <= 2 ? 'fas fa-crown' : '';
             playerElement.innerHTML = `
                 <div class="rank-number">
                     <i class="${crownIcon} crown"></i>
