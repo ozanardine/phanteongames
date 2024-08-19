@@ -336,18 +336,30 @@ body {
 
 .players-section .player.rank-1 {
     background-color: #FFD700; /* Ouro para o primeiro lugar */
+    color: #000; /* Texto preto para melhor contraste */
 }
 
 .players-section .player.rank-2 {
     background-color: #C0C0C0; /* Prata para o segundo lugar */
+    color: #000; /* Texto preto para melhor contraste */
 }
 
 .players-section .player.rank-3 {
     background-color: #CD7F32; /* Bronze para o terceiro lugar */
+    color: #000; /* Texto preto para melhor contraste */
 }
 
 .players-section .player.rank-default {
     background-color: #2a2a2a; /* Cor padrão para os outros jogadores */
+}
+
+.player .player-status {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
 }
 
 .players-section .player img {
@@ -388,4 +400,19 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-left: 30px;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-indicator.online {
+    background-color: green;
+}
+
+.status-indicator.offline {
+    background-color: red;
 }
