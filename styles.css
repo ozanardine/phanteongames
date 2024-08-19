@@ -171,13 +171,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-#serverName1 {
-    margin: 0 10px;
+    margin-bottom: 10px; /* Espaçamento de 10px na parte inferior */
 }
 
 .status-tag {
+    margin-bottom: 10px; /* Espaçamento de 10px na parte inferior do status */
     padding: 5px 10px;
     border-radius: 5px;
     color: white;
