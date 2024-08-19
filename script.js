@@ -130,12 +130,18 @@ async function fetchPlayerData() {
                 playerElement.classList.add('rank-2');
             } else if (index === 2) {
                 playerElement.classList.add('rank-3');
+            } else {
+                playerElement.classList.add('rank-default');
             }
 
-            // Adiciona o número de ranking
+            // Adiciona o número de ranking e a coroa correspondente
             const rankNumber = index + 1;
+            const crownIcon = index === 0 ? 'fas fa-crown' : index === 1 ? 'fas fa-crown' : index === 2 ? 'fas fa-crown' : '';
             playerElement.innerHTML = `
-                <span class="rank-number">${rankNumber}</span>
+                <div class="rank-number">
+                    <i class="${crownIcon} crown"></i>
+                    ${rankNumber}
+                </div>
                 <img src="${avatarUrl}" alt="${nickname} Avatar">
                 <div class="data-item">
                     <span class="title">Nickname</span>
