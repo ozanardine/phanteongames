@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Built Titling Rg';
+    src: url('BuiltTitlingRg-Regular.woff2') format('woff2'),
+        url('BuiltTitlingRg-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --primary-color: #EC4D2D;
     --background-color: #121212;
@@ -44,6 +53,11 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.header h1 {
+    font-family: 'Built Titling', sans-serif;
+    font-size: 36px;
 }
 
 .footer {
