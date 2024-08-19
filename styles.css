@@ -224,20 +224,25 @@ body {
     z-index: 2; /* Garante que o texto fique sobre a barra de progresso */
 }
 
-.connect-button, .subscription-button {
-    background-color: var(--primary-color);
+.connect-button {
     display: block;
+    width: 100px;
     margin: 20px auto 0 auto;
-    color: #ffffff;
-    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
     padding: 10px 20px;
     border-radius: 8px;
-    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
     text-decoration: none;
     transition: background-color 0.3s;
 }
 
-.connect-button:hover, .subscription-button:hover {
+.connect-button i {
+    margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+}
+
+.connect-button:hover {
     background-color: #c5533c;
 }
 
