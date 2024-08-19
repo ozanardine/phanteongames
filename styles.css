@@ -365,7 +365,7 @@ body {
     margin-right: 15px;
 }
 
-.rank-number .crown {
+.crown {
     margin-right: 5px;
     font-size: 18px;
 }
@@ -387,5 +387,5 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 10px;
+    margin-left: 30px;
 }
