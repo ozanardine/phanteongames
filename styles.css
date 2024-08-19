@@ -330,3 +330,30 @@ body {
     font-size: 18px;
     vertical-align: middle;
 }
+
+.players-section .player {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.players-section .player img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.players-section .player h3 {
+    margin: 0;
+    color: #ffffff;
+}
+
+.players-section .player p {
+    margin: 5px 0;
+    color: #cccccc;
+}
