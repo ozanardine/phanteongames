@@ -106,9 +106,9 @@ body {
     box-shadow: 0 4px 8px rgba(5, 4, 4, 0.1); /* Adiciona uma leve sombra para destaque */
 }
 
-.servers-section, .discord-section, .subscriptions-section, .staff-section, .players-section h2{
+.servers-section, .discord-section, .subscriptions-section, .staff-section, .players-section, h2{
     color: var(--primary-color);
-    margin-top: -10px;
+    margin-top: -5px;
 }
 
 .server-card {
