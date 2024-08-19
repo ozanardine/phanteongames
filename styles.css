@@ -47,7 +47,7 @@ body {
 
 .header {
     background-color: var(--primary-color);
-    padding: 10px 20px; /* Adiciona espaçamento interno à esquerda e à direita */
+    padding: 10px 40px; /* Aumenta o espaçamento à esquerda para trazer o logo e título mais para a direita */
     display: flex;
     align-items: center;
     width: 100%;
@@ -55,8 +55,8 @@ body {
 }
 
 .header .logo {
-    height: 40px; /* Mantém o tamanho do logo */
-    margin-right: 15px; /* Aumenta o espaçamento entre o logo e o título */
+    height: 40px;
+    margin-right: 15px; /* Mantém um espaçamento adequado entre o logo e o título */
 }
 
 .header h1 {
@@ -81,7 +81,8 @@ body {
     display: flex;
     flex: 1;
     flex-wrap: wrap;
-    padding-left: 20px; /* Adiciona espaçamento à esquerda */
+    padding-left: 40px; /* Espaçamento uniforme à esquerda */
+    padding-right: 40px; /* Espaçamento uniforme à direita */
 }
 
 .left-column, .right-column {
@@ -89,28 +90,18 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 50%;
-    padding: 10px 20px; /* Adiciona espaçamento interno à esquerda e à direita */
+    padding: 10px 20px; /* Ajusta o espaçamento interno */
 }
 
-.servers-section, .discord-section, .subscriptions-section, .staff-section {
-    padding: 20px; /* Aumenta o espaçamento interno */
+.servers-section, .discord-section, .subscriptions-section, .staff-section, .players-section {
+    padding: 20px;
     height: 600px;
     overflow-x: auto;
     overflow-y: auto;
     margin-bottom: 20px;
-    border-radius: 8px; /* Adiciona bordas arredondadas para um visual mais suave */
-}
-
-.servers-section {
-    background-color: #333;
-}
-
-.subscriptions-section {
-    background-color: #333;
-}
-
-.staff-section {
-    background-color: #333;
+    background-color: #333; /* Aplica uma cor de fundo consistente */
+    border-radius: 10px; /* Bordas arredondadas para um visual uniforme */
+    box-shadow: 0 4px 8px rgba(5, 4, 4, 0.1); /* Adiciona uma leve sombra para destaque */
 }
 
 .server-card {
@@ -259,22 +250,6 @@ body {
     margin: 0;
     font-size: 14px;
     color: #ccc;
-}
-
-.players-section {
-    background-color: #333;
-    padding: 10px;
-    height: 600px;
-    overflow-x: auto;
-    overflow-y: auto;
-    margin-bottom: 20px;
-}
-
-.players-section .player {
-    background-color: #2a2a2a;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 15px;
 }
 
 .subscription-button.pagseguro img {
